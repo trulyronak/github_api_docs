@@ -1,0 +1,1 @@
+{"captureId":"78e056ab-6613-45d9-aed9-5e2e4fa733fe","status":"started","metadata":{"startedAt":"2020-07-28T20:24:50.057Z","taskConfig":{"serviceConfig":{"host":"api.github.com","protocol":"https:","port":443,"basePath":"/"},"proxyConfig":{"host":"localhost","protocol":"http:","port":5000,"basePath":"/"}},"lastInteraction":null}}
