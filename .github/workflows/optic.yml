@@ -27,7 +27,7 @@ jobs:
             ref: ${{ github.ref }}
             path: thisRepo
       - name: Run Ci Publish
-        run: echo ::set-env name=MESSAGE::$(cd thisRepo && cidev publish)
+        run: . ./sourceme.sh && echo ::set-env name=MESSAGE::$(cd thisRepo && cidev publish)
       - name: Comment on PR
         uses: unsplash/comment-on-pr@master
         env:
