@@ -8,7 +8,7 @@ jobs:
         uses: actions/checkout@28c7f3d2b5162b5ddd3dfd9a45aa55eaf396478b # https://github.com/actions/checkout/commits/v2
         with:
             repository: opticdev/optic
-            ref: release
+            ref: feature/spec-publisher
       - uses: actions/setup-node@44c9c187283081e4e88b54b0efad9e9d468165a4 # https://github.com/actions/setup-node/commits/v1
         with:
           node-version: 12
