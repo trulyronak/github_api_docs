@@ -1,39 +1,19 @@
 name: Comment Spec url on PR
 on: [pull_request]
 jobs:
-  generate_spec_and_comment:
+  optic_pr:
     runs-on: ubuntu-latest
     steps:
-      - name: Download Optic CI-CLI (the one that has publish)
-        uses: actions/checkout@28c7f3d2b5162b5ddd3dfd9a45aa55eaf396478b # https://github.com/actions/checkout/commits/v2
+      - uses: trulyronak/gitbot@b05d9b9d7d66acdd09b44abde83ec1945c263156
         with:
-            repository: opticdev/optic
-            ref: feature/spec-publisher
-      - uses: actions/setup-node@44c9c187283081e4e88b54b0efad9e9d468165a4 # https://github.com/actions/setup-node/commits/v1
-        with:
-          node-version: 12
-      - name: Install Dependencies and Build Optic
-        run:  |
-          sudo apt-get update
-          sudo apt-get install apt-transport-https -y
-          echo "deb https://dl.bintray.com/sbt/debian /" | sudo tee -a /etc/apt/sources.list.d/sbt.list
-          curl -sL "https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x2EE0EA64E40A89B84B2DF73499E82A75642AC823" | sudo apt-key add
-          sudo apt-get update
-          sudo apt-get install sbt -y
-          . ./sourceme.sh && optic_build
-      - name: Checkout repository
-        uses: actions/checkout@28c7f3d2b5162b5ddd3dfd9a45aa55eaf396478b # https://github.com/actions/checkout/commits/v2
-        with:
-            ref: ${{ github.head_ref }}
-            path: thisRepo
-      - name: Run Ci Publish
-        run: |
-          . ./sourceme.sh && cd thisRepo && cidev publish
-          echo ::set-env name=MESSAGE::$(cidev publish)
+            repository: trulyronak/gitbot
+            branch: ${{ github.head_ref }}
+            head: main
+        id: generate_spec
       - name: Comment on PR
         uses: unsplash/comment-on-pr@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          msg: ${{ env.MESSAGE }}
+          msg: ${{ steps.generate_spec.outputs.message }}
           check_for_duplicate_msg: false
