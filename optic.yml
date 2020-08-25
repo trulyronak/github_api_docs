@@ -1,7 +1,5 @@
 name: GitHub
 tasks:
-  # The default task, invoke using `api run start`
-  # Learn how to finish setting up Optic at https://docs.useoptic.com/setup
   start:
     command: echo "Setup A Valid Command to Start your API!"
     baseUrl: http://localhost:4000
