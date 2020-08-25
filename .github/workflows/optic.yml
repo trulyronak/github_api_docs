@@ -4,7 +4,7 @@ jobs:
   optic_pr:
     runs-on: ubuntu-latest
     steps:
-      - uses: trulyronak/gitbot@b05d9b9d7d66acdd09b44abde83ec1945c263156
+      - uses: trulyronak/gitbot@0.01
         with:
             repository: trulyronak/gitbot
             branch: ${{ github.head_ref }}
