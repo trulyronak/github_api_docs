@@ -1,5 +1,5 @@
 name: Comment Spec url on PR
-on: [pull_request]
+on: [release]
 jobs:
   optic_pr:
     runs-on: ubuntu-latest
