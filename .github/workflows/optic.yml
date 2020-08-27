@@ -10,8 +10,6 @@ jobs:
             branch: ${{ github.head_ref }}
             head: main
         id: generate_spec
-      - name: Debug
-        run: echo ${{ steps.generate_spec.outputs.message }}
       - name: Comment on PR
         uses: unsplash/comment-on-pr@master
         env:
